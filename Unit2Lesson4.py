@@ -1,4 +1,4 @@
-io = int(input("Enter a number to get factorials up to it: "))
+io = int(input("Enter a number to get factorials up to it: ")) #Variable for storing the value of a number asked from the user to print the certain ammount factorials
 x=1 #creating variable to store factorials
 y=2 #creating variable to incriment to find factorials
 z=0 #setting variable for while loop
