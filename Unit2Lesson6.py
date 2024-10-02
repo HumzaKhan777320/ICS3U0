@@ -8,9 +8,9 @@ print("--8<--"*10) #printing a dividor for the next lines of code
 #****************************************(Divider for code for easy readability)
 
 y=int(input("Enter a number: ")) # taking an input from the user to make the wanted size triangle/pyramid
-for i in range(y): # making a for loop to print the wanted number of levels of the pyramid
-    print(z*(y-i-1), end="") #doing calculations based on the current number of the loop and the given input also making sure the print line dosnt end to print the next line in the same space
-    print(z1*(i*2+1)) #doing calculations based on the current value of the for loop and printing it after the spacing in the previous line for formatting
+for i in range(y): # making a for loop to print the wanted number of levels of the pyramid based on the users input
+    print(z*(y-i-1), end="") #doing calculations based on the current number of the loop and the given input to create the correct number of spaces for each level also making sure the print line dosnt end to print the next line in the same space
+    print(z1*(i*2+1)) #doing calculations based on the current value of the for loop and printing the desired number of hashtags after the spacing in the previous line for formatting here we print a certain number of hashtags by using the current value of i in the for loop to make sure the pyramid has a consistant patern adding 1 hashtag on each side as you go down the levels 
 print("--8<--"*10)  #printing a dividor for the next line of code
 
 #****************************************(Divider for code for easy readability)
