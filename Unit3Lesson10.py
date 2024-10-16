@@ -1,4 +1,4 @@
-import math#importing math library for calculations
+import math#importing math library for calculations :]
 x=(input("Enter an integer greater than 2: "))#taking input from the user
 q=0#creating a variable q and setting it to 0 for the try and except statement
 try:#declaring try function
