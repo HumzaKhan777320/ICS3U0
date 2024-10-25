@@ -13,7 +13,7 @@ def myfunc(x):#defining a function with 1 parameter x
     if(x%(i+1)==0):#checking if the current value of i+1 in a factor
         v.append(i+1)#appending i+1 to v
   return(v)#returning v array
-print("Hello, welcome to the school yearbook program here you will be asked to enter a number of photos and it will return you the most efficient dimensions of how to organize your number of photos photos.\n")#printing a message for the user to give details of the program
+print("Hello, welcome to the school yearbook program here you will be asked to enter a number of photos and it will return you the most efficient dimensions of how to organize your number of photos.\n")#printing a message for the user to give details of the program
 print("If you ever wish to exit the program please enter done or Done instead of a number\n")
 y=True#setting y to true for while loop
 while y:#creating while loop to run until the user enters done
