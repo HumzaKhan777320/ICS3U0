@@ -30,8 +30,8 @@ while y:#creating while loop to run until the user enters done
                 q=int(x/v1)#using x and v1 to find the other dimension and storing in q
                 p=(v1*2)+(q*2)#using v1 and q to find the perimeter and store it in p 
                 print("It would look like this:")#printing a message to the user to tell them when x photos are organized perimeter efficient what it would look like
-                for i in range(q):#going through each line of printing
-                    for i in range(v1):#going through each element of printing
+                for j in range(q):#going through each line of printing
+                    for k in range(v1):#going through each element of printing
                         print("#",end = "")#printing a hashtag for each photo and not endingt the line so they are in a row
                     print()#ending the line for the next row
                 print("%d x %d with perimeter %d" %(q,v1,p))#printing the dimensions of the rectangle of photos and the perimeter of it
