@@ -27,7 +27,7 @@ while y:#creating while loop to run until the user enters done
             x=int(x)#turning x into an integer
             if(x>0):#checking that x is greater than 0(extra precaution)
                 v1=myfunc(x)[-1]#storing the last factor of x listed in v from myfunc into v1 
-                q=int(x/v1)#using xs and v1 to find the other dimension and storing in q
+                q=int(x/v1)#using x and v1 to find the other dimension and storing in q
                 p=(v1*2)+(q*2)#using v1 and q to find the perimeter and store it in p 
                 print("It would look like this:")#printing a message to the user to tell them when x photos are organized perimeter efficient what it would look like
                 for i in range(q):#going through each line of printing
