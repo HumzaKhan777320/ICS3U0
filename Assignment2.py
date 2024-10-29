@@ -2,7 +2,7 @@
 #Student Number: 777320 
 #Course Code: ICS3U0 
 #Assignment: Programming Assignment 2: School Yearbook
-#10/23/2024
+#10/29/2024
 
 #8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----
 
