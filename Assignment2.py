@@ -1,4 +1,3 @@
-#not done yet
 # Name: Humza Khan
 #Student Number: 777320 
 #Course Code: ICS3U0 
@@ -39,7 +38,7 @@ while y:#creating while loop to run until the user enters done
     n=0#setting n to 0 to run the code later on and to stop the code from running by changing the variable
     x=(input("Enter the number of photos you would like organized: "))#takiong input from the user and storing it in x
     if(x=="Done"or x=="done"):#checking if the user enters done and wants to leave the program
-        print("Thank you for using the school yearbook program by Humza Khan we hope you found it helpful and please feel free to contact us at (###)###-#### for any questions or concerns")#printing a message for the user as they leave the program
+        print("Thank you for using the school yearbook program by Humza Khan we hope you found it helpful and please feel free to contact us at (###)###-#### for any questions or concerns.")#printing a message for the user as they leave the program
         break#ending the loop
     try:#declaring try function
         if(n==0):#checking that n = 0 to make sure the input is valid(positive int)
@@ -53,7 +52,7 @@ while y:#creating while loop to run until the user enters done
                     for k in range(v1):#going through each element of printing
                         print("#",end = "")#printing a hashtag for each photo and not endingt the line so they are in a row
                     print()#ending the line for the next row
-                print(" The most perimeter efficient dimensions of %d photos is %d x %d with perimeter %d" %(x,q,v1,p))#printing the dimensions of the rectangle of photos and the perimeter of it
+                print(" The most perimeter efficient dimensions of %d photos is %d x %d with a perimeter of %d." %(x,q,v1,p))#printing the dimensions of the rectangle of photos and the perimeter of it
             else:#else statment to activate if x is <=0
                 n+=1#incrimenting n to stop the code
                 print(f"Sorry {x} is invalid input try a positive integer")#telling the user that there input is invalid and a suggestion for the new input
