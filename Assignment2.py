@@ -4,9 +4,28 @@
 #Course Code: ICS3U0 
 #Assignment: Programming Assignment 2: School Yearbook
 #10/23/2024
+
+#8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----
+
+#Variable library:
+#myfunc - name of the function that returns an array of the the first half factors of its 1 parameter x
+#x - is used as a parameter in the function myfunc and a variable to store the users input in the main code
+#v - variable to store an array with the first half factors of the users input in order of least to greatest in the myfunc function 
+#z - variable used for storing a number up to which factors of x will be stored in v
+#i - variable to increment i times from 0 for a for-loop and to use to find factors
+#y - boolean variable used for the main while loop (acts as an on and off switch)
+#n - variable set to 0 to add to in case of error input but not ending the loop to prevent errors
+#v1 - variable used to store the last factor of the array v from function myfunc with parameter x(the users input)
+#q - variable to store the other dimension of the most perimeter efficient rectange of the photos calculated with x and v1
+#p - variable to store the perimeter of the rectangle of photos with the dimensions found and stored in v1 and q
+#j - variable that increments q times to print each row in the example image
+#k - variable that increments v1 times to print the correct number of #s in each row
+
+#8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----
+
 import math#importing math library for calculations of perimeter
 def myfunc(x):#defining a function with 1 parameter x
-  v=[]#creating an array to store the factors of x 
+  v=[]#creating an array to store the first half factors of x 
   z=math.sqrt(x)#storing the sqrt of x in z
   z=math.floor(z)#flooring the sqrt of x into an int
   for i in range(z):#going through each int from 0 to z
@@ -34,7 +53,7 @@ while y:#creating while loop to run until the user enters done
                     for k in range(v1):#going through each element of printing
                         print("#",end = "")#printing a hashtag for each photo and not endingt the line so they are in a row
                     print()#ending the line for the next row
-                print("%d x %d with perimeter %d" %(q,v1,p))#printing the dimensions of the rectangle of photos and the perimeter of it
+                print(" The most perimeter efficient dimensions of %d photos is %d x %d with perimeter %d" %(x,q,v1,p))#printing the dimensions of the rectangle of photos and the perimeter of it
             else:#else statment to activate if x is <=0
                 n+=1#incrimenting n to stop the code
                 print(f"Sorry {x} is invalid input try a positive integer")#telling the user that there input is invalid and a suggestion for the new input
