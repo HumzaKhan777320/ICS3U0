@@ -41,8 +41,10 @@
 
 #8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----8<-----
 
+#imports
 import math#importing math library for calculations of perimeter
 
+#function
 def myfunc(user_inpt):#defining a function with 1 parameter user_inpt
   arr=[]#creating an array to store the first half factors of user_inpt 
   z=math.sqrt(user_inpt)#storing the sqrt of user_inpt in z
@@ -52,6 +54,7 @@ def myfunc(user_inpt):#defining a function with 1 parameter user_inpt
         arr.append(i+1)#appending i+1 to arr
   return(arr)#returning arr array
 
+#welcome statement and details
 print("Hello, welcome to the school yearbook program", end="")
 print(" here you will be asked to enter a number of photos",end="")
 print(" and it will return you the most efficient dimensions",end="")
@@ -61,6 +64,8 @@ print("If you ever wish to exit the program please enter done or Done instead of
 #Giving the user instructions on how to exit the program
 
 tf=True#setting tf to true for while loop
+
+#main loop
 while tf:#creating while loop to run until the user enters done
     
     n=0#setting n to 0 to run the code later on
