@@ -58,9 +58,9 @@ def myfunc(user_inpt):#defining a function with 1 parameter user_inpt
 print("Hello, welcome to the school yearbook program", end="")
 print(" here you will be asked to enter a number of photos",end="")
 print(" and it will return the most efficient dimensions",end="")
-print(" on how to organize them.\n")
+print(" on how to organize them and its perimeter.\n")
 #printing a message for the user to give details of the program
-print("If you ever wish to exit the program please enter done or Done instead of a number\n")
+print("If you ever wish to exit the program please enter done or Done instead of a number.\n")
 #Giving the user instructions on how to exit the program
 
 tf=True#setting tf to true for while loop
