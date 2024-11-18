@@ -1,4 +1,3 @@
-#not done yet
 filename = "file.txt"
 fh = open(filename, "r")
 colorLine = fh.readline() 
