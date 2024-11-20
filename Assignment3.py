@@ -1,10 +1,10 @@
 #not done yet
 import turtle
-
+turtle.tracer(0,0)   
 def plot(x,y,z,color):
     x+y+z+color
 
-filename = "test1.xpm"
+filename = "rocky_bullwinkle_mod.xpm"
 fh = open(filename, "r")
 colorLine = fh.readline() 
 colorLine.strip()
@@ -28,22 +28,22 @@ for i in range(numColors):
     print(colorDefs[i][0],":",colorDefs[i][1])
     c1[i]=[colorDefs[i][0],colorDefs[i][1]]
 x=0
-if(row<=col):
-    x=col
-else:
-    x=row
+x=col
+y=row
 a=[0]*x
-print(c1)
 for j in range(x):
-    for i in range(x):
+    for i in range(y):
         if(j==0):
             a[i]=fh.readline()
-            print(a[i],end="")
+        turtle.tracer(0,0)
         turtle.penup()
-        turtle.goto(x/2+(i*10), x/2-(j*10))
+        turtle.goto(y*-3/2+(i*3), x*3/2-(j*3))
         turtle.pendown()
         for l in c1:
             if l[0]==a[j][i]:
+                print(a)
                 k=l[1]
-        turtle.dot(10,k)
+        turtle.dot(3,k)
+        turtle.hideturtle()
+turtle.update()
 fh.close()
