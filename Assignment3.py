@@ -1,10 +1,9 @@
-#not done yet
 import turtle   
 
 def plot(a,b,x,y,z,color):
     turtle.tracer(0,0)
     turtle.penup()
-    turtle.goto(-a*2/2+(x*2),b*2/2-(y*2))
+    turtle.goto(-a*z/4+(x*(z/2)),b*z/4-(y*(z/2)))
     turtle.pendown()
     turtle.dot(z,color)
     turtle.hideturtle()
@@ -12,7 +11,7 @@ def plot(a,b,x,y,z,color):
 def flip(a,b,x,y,z,color):
     turtle.tracer(0,0)
     turtle.penup()
-    turtle.goto(a*2/2-(x*2),-b*2/2+(y*2))
+    turtle.goto(a*z/4-(x*(z/2)),-b*z/4+(y*(z/2)))
     turtle.pendown()
     turtle.dot(z,color)
     turtle.hideturtle() 
@@ -25,10 +24,10 @@ def q(fh,row,col,z):
             for l in c1:
                 if l[0]==a[j][t]:
                     k=l[1]
-            z(row,col,t,j,3,k)
+            z(row,col,t,j,4,k)
     turtle.update()
     
-filename = "rb.xpm"
+filename = "rocky_bullwinkle_mod.xpm"
 fh = open(filename, "r")
 
 colorLine = fh.readline() 
@@ -52,6 +51,5 @@ for i in range(numColors):
     colorDefs[i][1] = color
     c1[i]=[colorDefs[i][0],colorDefs[i][1]]
 
-q(fh,row,col,plot)        
+q(fh,row,col,flip)
 fh.close()
-turtle.mainloop()
