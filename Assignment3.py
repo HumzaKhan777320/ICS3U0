@@ -27,8 +27,11 @@ def q(fh,row,col,z):
             z(row,col,t,j,3,k)
     turtle.update()
 
-usr_inpt = input("Enter the name of the file")
-filename = "rb.xpm"
+prmpt="Enter the name of the file you would like displayed."
+prmpt_continued=" Remeber it has to be in the same directory: "
+whole_prmpt=prmpt+prmpt_continued
+usr_inpt=input(whole_prmpt)
+filename = usr_inpt
 fh = open(filename, "r")
 
 colorLine = fh.readline() 
@@ -55,3 +58,4 @@ for i in range(numColors):
 q(fh,row,col,plot)        
 fh.close()
 turtle.mainloop()
+
