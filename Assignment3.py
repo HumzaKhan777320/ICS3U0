@@ -1,22 +1,26 @@
 import turtle   
 
-def plot(a,b,x,y,z,color):
+def plot(a,b,x,y,z,color,rotation):
     turtle.tracer(0,0)
     turtle.penup()
-    turtle.goto(-a*2/2+(x*2),b*2/2-(y*2))
-    turtle.pendown()
-    turtle.dot(z,color)
-    turtle.hideturtle()
-    
-def flip(a,b,x,y,z,color):
-    turtle.tracer(0,0)
-    turtle.penup()
-    turtle.goto(a*2/2-(x*2),-b*2/2+(y*2))
+    x1=-a*z/4+(x*z/2)
+    y1=b*z/4-(y*z/2)
+    if rotation == 0:
+        turtle.goto(x1,y1)
+    if rotation == 90:
+        turtle.goto(y1,-x1)
+    if rotation == 180:
+        turtle.goto(-x1,-y1)
+    if rotation == 270:
+        turtle.goto(-y1,x1)
+    else:
+        print("Sorry this is not a valid angle so we'll default to 0")
+        turtle.goto(x1,y1)
     turtle.pendown()
     turtle.dot(z,color)
     turtle.hideturtle() 
       
-def q(fh,row,col,z):
+def loops(fh,row,col,name_of_function,size,angle):
     a=[0]*row
     for j in range(row):
         a[j]=fh.readline()
@@ -24,13 +28,18 @@ def q(fh,row,col,z):
             for l in c1:
                 if l[0]==a[j][t]:
                     k=l[1]
-            z(row,col,t,j,3,k)
+            name_of_function(row,col,t,j,size,k,angle)
     turtle.update()
 
 prmpt="Enter the name of the file you would like displayed."
 prmpt_continued=" Remeber it has to be in the same directory: "
 whole_prmpt=prmpt+prmpt_continued
 usr_inpt=input(whole_prmpt)
+
+thickness=int(input("\nEnter the thickness: "))
+print("\nYour turtle window is now ready check your taskbar")
+
+
 filename = usr_inpt
 fh = open(filename, "r")
 
@@ -55,7 +64,8 @@ for i in range(numColors):
     colorDefs[i][1] = color
     c1[i]=[colorDefs[i][0],colorDefs[i][1]]
 
-q(fh,row,col,plot)        
+loops(fh,row,col,plot,thickness)        
 fh.close()
 turtle.mainloop()
+
 
