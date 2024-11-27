@@ -5,17 +5,14 @@ def plot(a,b,x,y,z,color,rotation):
     turtle.penup()
     x1=-a*z/4+(x*z/2)
     y1=b*z/4-(y*z/2)
-    if rotation == 0:
+    if(rotation == 0):
         turtle.goto(x1,y1)
-    if rotation == 90:
+    if(rotation == 90):
         turtle.goto(y1,-x1)
-    if rotation == 180:
+    if(rotation == 180):
         turtle.goto(-x1,-y1)
-    if rotation == 270:
+    if(rotation == 270):
         turtle.goto(-y1,x1)
-    else:
-        print("Sorry this is not a valid angle so we'll default to 0")
-        turtle.goto(x1,y1)
     turtle.pendown()
     turtle.dot(z,color)
     turtle.hideturtle() 
@@ -37,11 +34,18 @@ whole_prmpt=prmpt+prmpt_continued
 usr_inpt=input(whole_prmpt)
 
 thickness=int(input("\nEnter the thickness: "))
-print("\nYour turtle window is now ready check your taskbar")
 
-
+angle1=int(input("What angle rotation do you want the image 0, 90, 180, or 270: "))
+if(angle1 != 0):
+    if(angle1 != 90):
+        if(angle1 != 180):
+           if(angle1 != 270): 
+                print("Sorry this is not a valid angle so we'll default to 0")
+                angle1=0
 filename = usr_inpt
 fh = open(filename, "r")
+
+print("\nYour turtle window is now ready check your taskbar")
 
 colorLine = fh.readline() 
 colorLine.strip()
@@ -64,8 +68,6 @@ for i in range(numColors):
     colorDefs[i][1] = color
     c1[i]=[colorDefs[i][0],colorDefs[i][1]]
 
-loops(fh,row,col,plot,thickness)        
+loops(fh,row,col,plot,thickness,angle1)        
 fh.close()
 turtle.mainloop()
-
-
