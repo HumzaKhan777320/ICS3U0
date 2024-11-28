@@ -1,3 +1,4 @@
+#Not even close to being done
 """
 Name: Humza Khan
 Student Number: 777320@pdsb.net
@@ -13,10 +14,11 @@ import turtle
 def plot(row,col,x,y,size,color,angle):
     turtle.tracer(0,0)
     turtle.penup()
-    x1=-row*size/4+(x*size/2)
-    y1=col*size/4-(y*size/2)
+    turtle.shape("square")
+    x1=-row*size/4+(size*x/2)
+    y1=col*size/4-(size*y/2)
     if(angle == 0):
-        turtle.goto(x1,y1)
+        turtle.goto(x1*2,y1*2)
     if(angle == 90):
         turtle.goto(y1,-x1)
     if(angle == 180):
@@ -24,7 +26,9 @@ def plot(row,col,x,y,size,color,angle):
     if(angle == 270):
         turtle.goto(-y1,x1)
     turtle.pendown()
-    turtle.dot(size,color)
+    turtle.color(color)
+    turtle.turtlesize(size,size)
+    turtle.stamp()
     turtle.hideturtle() 
       
 def loops(fh,row,col,name_of_function,size,angle):
@@ -37,6 +41,7 @@ def loops(fh,row,col,name_of_function,size,angle):
                     color=i[1]
             name_of_function(row,col,x,y,size,color,angle)
     turtle.update()
+
 
 prmpt="Enter the name of the file you would like displayed."
 prmpt_continued=" Remeber it has to be in the same directory: "
@@ -86,3 +91,4 @@ loops(fh,row,col,plot,thickness,angle1)
 
 fh.close()
 turtle.mainloop()
+
