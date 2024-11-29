@@ -8,8 +8,8 @@ Assignment: Assignment 3 - Making a graphics plotter in Turtle
 
 Variable Dictionary:
 inputs - Function to get user inputs and append to various_inputs array
-prmpt - "Enter the name of the file you would like displayed."
-prmpt_continued - " Remember it has to be in the same directory: "
+prmpt - First part of user prompt
+prmpt_continued - Second part of user prompt
 whole_prmpt - Combined string of prmpt and prmpt_continued for input prompt
 usr_inpt - User input for the filename
 thickness - User input for the thickness of the plot
@@ -18,14 +18,14 @@ various_inputs - Array to store user inputs (filename, thickness, angle1)
 plot - Function to plot the turtle graphics based on coordinates, size, and color
 row - Number of rows in the plot (from file)
 col - Number of columns in the plot (from file)
-x - Current x-coordinate in the plot loop
-y - Current y-coordinate in the plot loop
+x - Current x coordinate being plotted
+y - Current y coordinate being plotted
 size - Size of the dots to be plotted
 color - Color of the dots to be plotted
-angle - Rotation angle for the plot
-fh - File handler for reading the input file
+angle - Rotation angle for plotting
+fh - Variable for oppening abd holding the file 
 name_of_function - Variable holding the function to call for plotting
-a - Array to store each row of the plot data
+temp_array - Array to store each row of the plot data
 color_array - Function to read color definitions and call the plotting loop
 colorDefs - 2D array to store symbol and color pairs
 filtered_colorDefs - Filtered list of color definitions
@@ -35,13 +35,20 @@ c - Character placeholder in color definition
 colorLine - Line from file containing color information
 """
 import turtle   
-
-def inputs(various_inputs):    
+# importting turtle library
+def inputs(various_inputs):
+    #defining inputs function with various_inputs array as parameter    
     prmpt="Enter the name of the file you would like displayed."
+    #first part of the user's prompt for file name
     prmpt_continued=" Remeber it has to be in the same directory: "
+    #second part of the user's input for file name
     whole_prmpt=prmpt+prmpt_continued
+    # compining the 2 parts into one prompt
     usr_inpt=input(whole_prmpt)
+    #displaying prompt to user
+    #taking the file name as input from the user and storing in usr_inpt
     thickness=int(input("\nEnter the thickness: "))
+    #taking user input for the thichness of each point (size)
     angle1=int(input("What angle rotation do you want the image 0, 90, 180, or 270: "))
     if(angle1 != 0):
         if(angle1 != 90):
@@ -72,12 +79,12 @@ def plot(row,col,x,y,size,color,angle):
     turtle.hideturtle() 
       
 def loops(fh,row,col,name_of_function,size,angle):
-    a=[0]*row
+    temp_array=[0]*row
     for y in range(row):
-        a[y]=fh.readline()
+        temp_array[y]=fh.readline()
         for x in range(col):
             for i in filtered_colorDefs:
-                if i[0]==a[y][x]:
+                if i[0]==temp_array[y][x]:
                     color=i[1]
             name_of_function(row,col,x,y,size,color,angle)
     turtle.update()
