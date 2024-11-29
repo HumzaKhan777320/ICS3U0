@@ -26,7 +26,7 @@ angle - Rotation angle for plotting
 fh - Variable for oppening abd holding the file 
 name_of_function - Variable holding the function to call for plotting
 temp_array - Array to store each row of the plot data
-color_array - Function to read color definitions and call the plotting loop
+color_array - Function to read color definitions and call the loops function
 colorDefs - 2D array to store symbol and color pairs
 filtered_colorDefs - Filtered list of color definitions
 numColors - Number of color definitions in the file
@@ -48,36 +48,40 @@ def inputs(various_inputs):
     #displaying prompt to user
     #taking the file name as input from the user and storing in usr_inpt
     thickness=int(input("\nEnter the thickness: "))
-    #taking user input for the thichness of each point (size)
+    #taking user input for the thichness of each point (size of image)
     angle1=int(input("What angle rotation do you want the image 0, 90, 180, or 270: "))
-    if(angle1 != 0):
-        if(angle1 != 90):
-            if(angle1 != 180):
-                if(angle1 != 270): 
+    #taking the angle of rotation from the user with provided prompt
+    if(angle1 != 0): #checking if the angle is not 0
+        if(angle1 != 90):#checking if thae angle is not 90
+            if(angle1 != 180):#checking if the angle is not 180
+                if(angle1 != 270): #checking if the angle is not 270
                     print("Sorry this is not a valid angle so we'll default to 0")
+                    #telling the user they did not input a valid angle
                     angle1=0
+                    #defaulting to a 0 degree angle
     print("\nYour turtle window is now ready check your taskbar")
+    #telling the user to check for the turtle window
     various_inputs.append(usr_inpt)
+    #appending inputed file name to various_inputs array for out of function access
     various_inputs.append(thickness)
+    #appending inputed thickness to various_inputs array for out of function access
     various_inputs.append(angle1)
+    #appending inputed angle to various_inputs array for out of functiopn access
 
-def plot(row,col,x,y,size,color,angle):
-    turtle.tracer(0,0)
-    turtle.penup()
-    x1=-row*size/4+(size*x/2)
-    y1=col*size/4-(size*y/2)
-    if(angle == 0):
-        turtle.goto(x1,y1)
-    if(angle == 90):
-        turtle.goto(y1,-x1)
-    if(angle == 180):
-        turtle.goto(-x1,-y1)
-    if(angle == 270):
-        turtle.goto(-y1,x1)
-    turtle.pendown()
-    turtle.dot(size,color)
-    turtle.hideturtle() 
-      
+def color_array(colorDefs,filtered_colorDefs,numColors,fh,row,col,angle1,thickness):
+    #declaring
+    for i in range(numColors):
+        colorLine = fh.readline() 
+        colorLine.strip()
+        sym, c, color = colorLine.split()
+        if(sym=="~"):
+            sym=" "
+        colorDefs[i][0] = sym
+        colorDefs[i][1] = color
+        filtered_colorDefs[i]=[colorDefs[i][0],colorDefs[i][1]]
+    loops(fh,row,col,plot,thickness,angle1)
+
+
 def loops(fh,row,col,name_of_function,size,angle):
     temp_array=[0]*row
     for y in range(row):
@@ -89,22 +93,26 @@ def loops(fh,row,col,name_of_function,size,angle):
             name_of_function(row,col,x,y,size,color,angle)
     turtle.update()
 
-def color_array(colorDefs,filtered_colorDefs,numColors,fh,row,col,angle1,thickness):
-    for i in range(numColors):
-        colorLine = fh.readline() 
-        colorLine.strip()
-        sym, c, color = colorLine.split()
-        if(sym=="~"):
-            sym=" "
-        colorDefs[i][0] = sym
-        colorDefs[i][1] = color
-        filtered_colorDefs[i]=[colorDefs[i][0],colorDefs[i][1]]
-    loops(fh,row,col,plot,thickness,angle1)
+def plot(row,col,x,y,size,color,angle):
+    turtle.tracer(0,0)
+    turtle.penup()
+    x1=-row*1.25*size/4+(size*x/1.5)
+    y1=col*1.5*size/4-(size*y/1.5)
+    if(angle == 0):
+        turtle.goto(x1,y1)
+    if(angle == 90):
+        turtle.goto(y1,-x1)
+    if(angle == 180):
+        turtle.goto(-x1,-y1)
+    if(angle == 270):
+        turtle.goto(-y1,x1)
+    turtle.pendown()
+    turtle.dot(size,color)
+    turtle.hideturtle()       
     
 
 various_inputs=[]  
-inputs(various_inputs)
-  
+inputs(various_inputs) 
 filename = various_inputs[0]
 fh = open(filename, "r")
 colorLine = fh.readline() 
@@ -119,7 +127,7 @@ colorDefs = [[0]*2]*numColors
 filtered_colorDefs=[[0]]*numColors
 angle1=various_inputs[2]
 thickness=various_inputs[1]
+turtle.screensize(400,400,"gray") 
 color_array(colorDefs,filtered_colorDefs,numColors,fh,row,col,angle1,thickness)
 fh.close()
 turtle.mainloop()
-
