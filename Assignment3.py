@@ -88,7 +88,7 @@ def color_array(numColors,colorDefs,filtered_colorDefs):
         colorDefs[i][1] = color
         #storing coresponding color code for color definition in colorDefs array
         filtered_colorDefs[i]=[colorDefs[i][0],colorDefs[i][1]]
-        #storinf pairs of corresponding color information in a new focused array
+        #storing pairs of corresponding color information in a new focused array
         #filtered_colorDefs
 
 
