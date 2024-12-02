@@ -12,21 +12,22 @@ prmpt - First part of user prompt
 prmpt_continued - Second part of user prompt
 whole_prmpt - Combined string of prmpt and prmpt_continued for the file name input
 usr_inpt - User input for the filename
-thickness - User input for the thickness of the plot
+thickness - User input for the thickness/size of the image
 angle1 - User input for the angle rotation (0, 90, 180, 270)
 various_inputs - Array to store user inputs (filename, thickness, angle1)
-plot - Function to plot based on coordinates, size, and color
-row - Number of rows in the plot (from file)
-col - Number of columns in the plot (from file)
+plot - Function to plot the image based on coordinates, size, and color
+row - Number of rows in the image (from file)
+col - Number of columns in the image (from file)
 x - Current x coordinate being plotted
 y - Current y coordinate being plotted
-size - Size of the dots to be plotted
+size - Size of the dots to be plotted (same as thickness)
 color - Color of the dots to be plotted
 angle - Rotation angle for plotting
 fh - Variable for oppening the file 
-name_of_function - Variable storing the name of the function to be called in loops function
+loops - Function to go through each symbol/pixel in the image (from file) and find its
+    corresponding color information (from file)
 temp_array - Array to store each row of the plot data
-color_array - Function to read color definitions and call the loops function
+color_array - Function to read color information and store it
 colorDefs - 2D array to store symbol and color pairs
 filtered_colorDefs - Filtered list of color definitions
 numColors - Number of color definitions in the file
@@ -68,8 +69,8 @@ def inputs(various_inputs):
     various_inputs.append(angle1)
     #appending inputed angle to various_inputs array for out of functiopn access
 
-def color_array(colorDefs,filtered_colorDefs,numColors,fh,row,col,angle1,thickness):
-    #declaring color_array function to read color definitions and call the loops function
+def color_array(numColors,colorDefs,filtered_colorDefs):
+    #declaring color_array function to read color information and store it
     for i in range(numColors):
         #going through each color definition in inputted file
         colorLine = fh.readline()
@@ -77,7 +78,7 @@ def color_array(colorDefs,filtered_colorDefs,numColors,fh,row,col,angle1,thickne
         colorLine.strip()
         #getting rid of unwanted space in data line
         sym, c, color = colorLine.split()
-        #unpacking the line of dat into 3 variables
+        #unpacking the line of color data into 3 variables
         if(sym=="~"):
             #checking if a symbol for color definition is a '~'
             sym=" "
@@ -89,11 +90,13 @@ def color_array(colorDefs,filtered_colorDefs,numColors,fh,row,col,angle1,thickne
         filtered_colorDefs[i]=[colorDefs[i][0],colorDefs[i][1]]
         #storinf pairs of corresponding color information in a new focused array
         #filtered_colorDefs
-    loops(fh,row,col,plot,thickness,angle1,filtered_colorDefs)
-    #calling the loops function to plot the image with color data
 
 
-def loops(fh,row,col,name_of_function,size,angle,filtered_colorDefs):
+def loops(size,angle,filtered_colorDefs):
+    #Function to go through each symbol/pixel in the image (from file) and find its
+    #corresponding color information (from file)
+    #taking the size of each dot, the angle of rotation and the list of color
+    #definitions as parameters 
     temp_array=[0]*row
     for y in range(row):
         temp_array[y]=fh.readline()
@@ -101,14 +104,14 @@ def loops(fh,row,col,name_of_function,size,angle,filtered_colorDefs):
             for i in filtered_colorDefs:
                 if i[0]==temp_array[y][x]:
                     color=i[1]
-            name_of_function(row,col,x,y,size,color,angle)
+            plot(x,y,size,color,angle)
     turtle.update()
 
-def plot(row,col,x,y,size,color,angle):
+def plot(x,y,size,color,angle):
     turtle.tracer(0,0)
     turtle.penup()
-    x1=-row*(size/4)+(x*size/2)+0.5
-    y1=col*(size/4)-(y*size/2)-0.5
+    x1=-col*(size/4)+(x*size/2)
+    y1=row*(size/4)-(y*size/2)
     if(angle == 0):
         turtle.goto(x1,y1)
     if(angle == 90):
@@ -139,6 +142,7 @@ filtered_colorDefs=[[0]]*numColors
 angle1=various_inputs[2]
 thickness=various_inputs[1]
 turtle.screensize(400,400,"gray") 
-color_array(colorDefs,filtered_colorDefs,numColors,fh,row,col,angle1,thickness)
+color_array(numColors,colorDefs,filtered_colorDefs)
+loops(thickness,angle1,filtered_colorDefs)
 fh.close()
 turtle.mainloop()
