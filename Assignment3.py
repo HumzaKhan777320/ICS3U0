@@ -107,8 +107,8 @@ def loops(fh,row,col,name_of_function,size,angle,filtered_colorDefs):
 def plot(row,col,x,y,size,color,angle):
     turtle.tracer(0,0)
     turtle.penup()
-    x1=-row*(size/4)*1.25+(x*size/1.5)
-    y1=col*(size/4)*1.5-(y*size/1.5)
+    x1=-row*(size/4)+(x*size/2)+0.5
+    y1=col*(size/4)-(y*size/2)-0.5
     if(angle == 0):
         turtle.goto(x1,y1)
     if(angle == 90):
