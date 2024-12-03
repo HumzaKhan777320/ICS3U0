@@ -105,6 +105,7 @@ def loops(size,angle,filtered_colorDefs):
         temp_array[y]=fh.readline()
         #store the y+1th line of color info at the yth index of temp_array
         for x in range(col):
+            #for loop to go through each symbol in each line of image/plotting data
             for i in filtered_colorDefs:
                 if i[0]==temp_array[y][x]:
                     color=i[1]
