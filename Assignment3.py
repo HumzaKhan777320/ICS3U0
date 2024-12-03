@@ -98,8 +98,12 @@ def loops(size,angle,filtered_colorDefs):
     #taking the size of each dot, the angle of rotation and the list of color
     #definitions as parameters 
     temp_array=[0]*row
+    #creating a temperary array of size row to append each line of the encoded image
     for y in range(row):
+        #goes through each element in the temp_array
+        #to read through each line of the image (from file)
         temp_array[y]=fh.readline()
+        #store the y+1th line of color info at the yth index of temp_array
         for x in range(col):
             for i in filtered_colorDefs:
                 if i[0]==temp_array[y][x]:
