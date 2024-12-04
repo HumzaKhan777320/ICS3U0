@@ -103,14 +103,23 @@ def loops(size,angle,filtered_colorDefs):
         #goes through each element in the temp_array
         #to read through each line of the image (from file)
         temp_array[y]=fh.readline()
-        #store the y+1th line of color info at the yth index of temp_array
+        #store the y+1th line of the image at the yth index of temp_array
         for x in range(col):
             #for loop to go through each symbol in each line of image/plotting data
             for i in filtered_colorDefs:
+                #for loop to go through the list of color definitions to 
+                #find the correct corresponding color
                 if i[0]==temp_array[y][x]:
+                    #comparing the curent symbol to the list of color definitions
                     color=i[1]
+                    #creating variable color and setting it to the color based
+                    #on the symbol
             plot(x,y,size,color,angle)
+            #calling the plot function with the x and y values along with the
+            #color and angle of rotation
     turtle.update()
+    #updating the turtle screen 
+    #needed due to turtle.tracer() located in the plot function
 
 def plot(x,y,size,color,angle):
     turtle.tracer(0,0)
