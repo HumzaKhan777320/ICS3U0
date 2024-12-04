@@ -25,7 +25,7 @@ color - Color of the dots to be plotted
 angle - Rotation angle for plotting
 fh - Variable for oppening the file 
 loops - Function to go through each symbol/pixel in the image (from file) and find its
-    corresponding color information (from file)
+    corresponding color information (from file) and call the plot function
 temp_array - Array to store each row of the plot data
 color_array - Function to read color information and store it
 colorDefs - 2D array to store symbol and color pairs
@@ -92,11 +92,11 @@ def color_array(numColors,colorDefs,filtered_colorDefs):
         #filtered_colorDefs
 
 
-def loops(size,angle,filtered_colorDefs):
+def loops(row,col,size,angle,filtered_colorDefs):
     #Function to go through each symbol/pixel in the image (from file) and find its
     #corresponding color information (from file)
-    #taking the size of each dot, the angle of rotation and the list of color
-    #definitions as parameters 
+    #taking the number of rows and columns in the image, the size of each dot, 
+    # the angle of rotation and the list of color definitions as parameters 
     temp_array=[0]*row
     #creating a temporary array of size row to append each line of the encoded image
     for y in range(row):
@@ -157,6 +157,6 @@ angle1=various_inputs[2]
 thickness=various_inputs[1]
 turtle.screensize(400,400,"gray") 
 color_array(numColors,colorDefs,filtered_colorDefs)
-loops(thickness,angle1,filtered_colorDefs)
+loops(row,col,thickness,angle1,filtered_colorDefs)
 fh.close()
 turtle.mainloop()
