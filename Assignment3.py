@@ -103,7 +103,7 @@ def loops(row,col,size,angle,filtered_colorDefs):
         #goes through each element in the temp_array
         #to read through each line of the image (from file)
         temp_array[y]=fh.readline()
-        #store the y+1th line of the image at the yth index of temp_array
+        #store the y+1th line of the image encoded at the yth index of temp_array
         for x in range(col):
             #for loop to go through each symbol in each line of image/plotting data
             for i in filtered_colorDefs:
