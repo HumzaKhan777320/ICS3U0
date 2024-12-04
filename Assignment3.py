@@ -106,10 +106,13 @@ def loops(row,col,size,angle,filtered_colorDefs):
         #store the y+1th line of the image encoded at the yth index of temp_array
         for x in range(col):
             #for loop to go through each symbol in each line of image/plotting data
-            for j in filtered_colorDefs:
+            for j in range (len(filtered_colorDefs)):
                 #for loop to go through the list of color definitions to 
                 #find the correct corresponding color
-                if j[0]==temp_array[y][x]:
+                current_color_line=filtered_colorDefs[j]
+                #storing the jth index of filtered_colorDefs in current_color_line
+                #to check if the symbol coresponds with it
+                if current_color_line[0]==temp_array[y][x]:
                     #comparing the curent symbol to the list of color definitions
                     color=j[1]
                     #creating variable color and setting it to the color based
