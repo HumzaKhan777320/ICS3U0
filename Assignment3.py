@@ -98,7 +98,7 @@ def loops(size,angle,filtered_colorDefs):
     #taking the size of each dot, the angle of rotation and the list of color
     #definitions as parameters 
     temp_array=[0]*row
-    #creating a temperary array of size row to append each line of the encoded image
+    #creating a temporary array of size row to append each line of the encoded image
     for y in range(row):
         #goes through each element in the temp_array
         #to read through each line of the image (from file)
