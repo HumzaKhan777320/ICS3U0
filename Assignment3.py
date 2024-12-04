@@ -30,6 +30,8 @@ temp_array - Array to store each row of the plot data
 color_array - Function to read color information and store it
 colorDefs - 2D array to store symbol and color pairs
 filtered_colorDefs - Filtered list of color definitions
+current_color_line - Variable to hold a color definition to compare against a symbol in
+    the encoded image (from file)
 numColors - Number of color definitions in the file
 sym - Variable that stores a symbol corrisponding with a color code
 c - Variable needed for unpacking color definitions
@@ -113,8 +115,8 @@ def loops(row,col,size,angle,filtered_colorDefs):
                 #storing the jth index of filtered_colorDefs in current_color_line
                 #to check if the symbol coresponds with it
                 if current_color_line[0]==temp_array[y][x]:
-                    #comparing the curent symbol to the list of color definitions
-                    color=j[1]
+                    #comparing the curent symbol to a color definition
+                    color=current_color_line[1]
                     #creating variable color and setting it to the color based
                     #on the symbol
             plot(x,y,size,color,angle)
