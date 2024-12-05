@@ -127,8 +127,15 @@ def loops(row,col,size,angle,filtered_colorDefs):
     #needed due to turtle.tracer() located in the plot function
 
 def plot(x,y,size,color,angle):
+    #function to plot a point on the turtle screen at a certain coordenate and of a certain size/color
+    #and rotation
+    #takes ints x and y as parameters toi find the location of plotting
+    #takes int size and string color to plot the point of desired size and color
+    #takes int angle to alter the images rotation
     turtle.tracer(0,0)
+    #hides the turtle while plotting for faster plotting
     turtle.penup()
+    #lifts the turtle pen to move it to a certain location
     x1=-col*(size/4)+(x*size/2)
     y1=row*(size/4)-(y*size/2)
     if(angle == 0):
