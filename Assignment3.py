@@ -61,8 +61,6 @@ def inputs(various_inputs):
                     #telling the user they did not input a valid angle
                     angle1=0
                     #defaulting to a 0 degree angle
-    print("\nYour turtle window is now ready check your taskbar")
-    #telling the user to check for the turtle window
     various_inputs.append(usr_inpt)
     #appending inputed file name to various_inputs array for out of function access
     various_inputs.append(thickness)
@@ -176,44 +174,52 @@ inputs(various_inputs)
 #calling the inputs function with the various_inputs array as parameter 
 filename = various_inputs[0]
 #declaring variable filename and storing the 0th index of various_inputs array in it
-fh = open(filename, "r")
-#creating variable fh to open the filename file
-colorLine = fh.readline()
-#creating variable colorLine and storing the first line of the file in it 
-colorLine.strip()
-#getting rid of spaces in between the elements in colorLine
-col = colorLine.split()[0]
-#spliting colorLine and storing the 0th index of it in variable col  
-row = colorLine.split()[1]
-#spliting colorLine and storing the 1st index of it in variable row 
-num = colorLine.split()[2]
-#spliting colorLine and storing the 2nd index of it in variable num 
-row=int(row)
-#turning row into an int
-col=int(col)
-#turning col into an int
-numColors=int(num)
-#turning num into an int and storing in variable numColors
-colorDefs = [[0]*2]*numColors
-#declaring colorDefs 2D array with numColors internal arrays with 2 elements per array 
-filtered_colorDefs=[[0]]*numColors
-#declaring filtered_colorDefs array with numColors elements to store each color definition 
-angle1=various_inputs[2]
-#storing the 2nd index of the various_inputs array in variable angle1 to check how to
-#rotate the image
-thickness=various_inputs[1]
-#storing the 1st index of the various_inputs array in variable thickness to have a constant
-#size for each dot plotted
-turtle.screensize(400,400,"white")
-#setting the turtle screen size to 400X400 with white as the background color 
-color_array(numColors,colorDefs,filtered_colorDefs)
-#calling the color_array function with parameters int numColors, 2D array colorDefs
-#and filtered_colorDefs array to store the color definitions
-loops(row,col,thickness,angle1,filtered_colorDefs)
-#calling the loops function with parameters ints row and col, int thickness, int angle1
-#which is the angle of rotation and the filtered_colorDefs array to go through each symbol
-#in the encoded image (from file) and call the plot function
-fh.close()
-#closing the file to prevent it from getting corrupted
-turtle.mainloop()
-#making the turtle window stay open
+try:
+    fh = open(filename, "r")
+    #creating variable fh to open the filename file
+    colorLine = fh.readline()
+    #creating variable colorLine and storing the first line of the file in it 
+    colorLine.strip()
+    #getting rid of spaces in between the elements in colorLine
+    col = colorLine.split()[0]
+    #spliting colorLine and storing the 0th index of it in variable col  
+    row = colorLine.split()[1]
+    #spliting colorLine and storing the 1st index of it in variable row 
+    num = colorLine.split()[2]
+    #spliting colorLine and storing the 2nd index of it in variable num 
+    row=int(row)
+    #turning row into an int
+    col=int(col)
+    #turning col into an int
+    numColors=int(num)
+    #turning num into an int and storing in variable numColors
+    colorDefs = [[0]*2]*numColors
+    #declaring colorDefs 2D array with numColors internal arrays with 2 elements per array 
+    filtered_colorDefs=[[0]]*numColors
+    #declaring filtered_colorDefs array with numColors elements to store each color definition 
+    angle1=various_inputs[2]
+    #storing the 2nd index of the various_inputs array in variable angle1 to check how to
+    #rotate the image
+    thickness=various_inputs[1]
+    #storing the 1st index of the various_inputs array in variable thickness to have a constant
+    #size for each dot plotted
+    turtle.screensize(400,400,"white")
+    #setting the turtle screen size to 400X400 with white as the background color 
+    color_array(numColors,colorDefs,filtered_colorDefs)
+    #calling the color_array function with parameters int numColors, 2D array colorDefs
+    #and filtered_colorDefs array to store the color definitions
+    loops(row,col,thickness,angle1,filtered_colorDefs)
+    #calling the loops function with parameters ints row and col, int thickness, int angle1
+    #which is the angle of rotation and the filtered_colorDefs array to go through each symbol
+    #in the encoded image (from file) and call the plot function
+    print("\nYour turtle window is now ready check your taskbar")
+    #telling the user to check for the turtle window
+    fh.close()
+    #closing the file to prevent it from getting corrupted
+    turtle.mainloop()
+    #making the turtle window stay open
+except:
+    print("Sorry your file was not found please check your file's name and location",end="")
+    #printing a message to the user that there file name is wrong
+    print(" and try to run the code again")
+    #telling the user to try the code again after checking the file name and location
