@@ -1,4 +1,3 @@
-#Not even close to being done
 """
 Name: Humza Saleem Khan
 Student Number: 777320@pdsb.net
@@ -137,12 +136,12 @@ def plot(x,y,size,color,angle):
     #hides the turtle while plotting for faster plotting
     turtle.penup()
     #lifts the turtle pen to move it to a certain location
-    x1=(x-(col/2))*size 
+    x1=(x-(col/2-1))*(size-1)
     #create variable x1 for x coordinate of point to be ploted
     #set it to a calculation based on the size of the image/each dot
     #and the number of columns in the image along
     #with the value of x from the loops function
-    y1=(-y+(row/2))*size
+    y1=(-y+(row/2-1))*(size-1)
     #create variable y1 for y coordinate of point to be ploted
     #set it to a calculation based on the size of the image/each dot
     #and the number of rows in the image along
