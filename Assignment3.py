@@ -204,7 +204,7 @@ angle1=various_inputs[2]
 #rotate the image
 thickness=various_inputs[1]
 #storing the 1st index of the various_inputs array in variable thickness to have a constant
-size for each dot plotted
+#size for each dot plotted
 turtle.screensize(400,400,"white")
 #setting the turtle screen size to 400X400 with white as the background color 
 color_array(numColors,colorDefs,filtered_colorDefs)
