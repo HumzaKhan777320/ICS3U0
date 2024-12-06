@@ -172,7 +172,7 @@ def plot(x,y,size,color,angle):
     
 
 various_inputs=[]
-#declaring array various_inputs   
+#declaring array various_inputs to use for the inputs function   
 inputs(various_inputs)
 #calling the inputs function with the various_inputs array as parameter 
 filename = various_inputs[0]
@@ -198,19 +198,22 @@ numColors=int(num)
 colorDefs = [[0]*2]*numColors
 #declaring colorDefs 2D array with numColors internal arrays with 2 elements per array 
 filtered_colorDefs=[[0]]*numColors
-#declaring filtered_colorDefs array with numColors elements 
+#declaring filtered_colorDefs array with numColors elements to store each color definition 
 angle1=various_inputs[2]
-#storing the 2nd index of the various_inputs array in variable angle1
+#storing the 2nd index of the various_inputs array in variable angle1 to check how to
+#rotate the image
 thickness=various_inputs[1]
-#storing the 1st index of the various_inputs array in variable thickness
+#storing the 1st index of the various_inputs array in variable thickness to have a constant
+size for each dot plotted
 turtle.screensize(400,400,"white")
 #setting the turtle screen size to 400X400 with white as the background color 
 color_array(numColors,colorDefs,filtered_colorDefs)
 #calling the color_array function with parameters int numColors, 2D array colorDefs
-#and filtered_colorDefs array
+#and filtered_colorDefs array to store the color definitions
 loops(row,col,thickness,angle1,filtered_colorDefs)
 #calling the loops function with parameters ints row and col, int thickness, int angle1
-#which is the angle of rotation and the filtered_colorDefs array
+#which is the angle of rotation and the filtered_colorDefs array to go through each symbol
+#in the encoded image (from file) and call the plot function
 fh.close()
 #closing the file to prevent it from getting corrupted
 turtle.mainloop()
