@@ -127,48 +127,91 @@ def loops(row,col,size,angle,filtered_colorDefs):
     #needed due to turtle.tracer() located in the plot function
 
 def plot(x,y,size,color,angle):
-    #function to plot a point on the turtle screen at a certain coordenate and of a certain size/color
+    #function to plot a point on the turtle screen at a certain 
+    #coordenate and of a certain size/color
     #and rotation
-    #takes ints x and y as parameters toi find the location of plotting
+    #takes ints x and y as parameters to find the location of plotting
     #takes int size and string color to plot the point of desired size and color
     #takes int angle to alter the images rotation
     turtle.tracer(0,0)
     #hides the turtle while plotting for faster plotting
     turtle.penup()
     #lifts the turtle pen to move it to a certain location
-    x1=-col*(size/4)+(x*size/2)
-    y1=row*(size/4)-(y*size/2)
+    x1=(x-(col/2))*size 
+    #create variable x1 for x coordinate of point to be ploted
+    #set it to a calculation based on the size of the image/each dot
+    #and the number of columns in the image along
+    #with the value of x from the loops function
+    y1=(-y+(row/2))*size
+    #create variable y1 for y coordinate of point to be ploted
+    #set it to a calculation based on the size of the image/each dot
+    #and the number of rows in the image along
+    #with the value of y from the loops function
     if(angle == 0):
+        #check if the user's inputed angle of rotation is 0 degrees
         turtle.goto(x1,y1)
+        #move the turtle pen to coordenates x1,y1
     if(angle == 90):
+        #check if the user's inputed angle of rotation is 90 degrees
         turtle.goto(y1,-x1)
+        #move the turtle pen to coordenates y1,-x1
     if(angle == 180):
+        #check if the user's inputed angle of rotation is 180 degrees
         turtle.goto(-x1,-y1)
+        #move the turtle pen to coordenates -x1,-y1
     if(angle == 270):
+        #check if the user's inputed angle of rotation is 270 degrees
         turtle.goto(-y1,x1)
+        #move the turtle pen to coordenates -y1,x1
     turtle.pendown()
+    #put the turtle pen down to plot the point
     turtle.dot(size,color)
-    turtle.hideturtle()       
+    #ploting the point with size size and color color
+    turtle.hideturtle()
+    #hiding the plotted point for faster plotting since the screen dosn't have to update yet       
     
 
-various_inputs=[]  
-inputs(various_inputs) 
+various_inputs=[]
+#declaring array various_inputs   
+inputs(various_inputs)
+#calling the inputs function with the various_inputs array as parameter 
 filename = various_inputs[0]
+#declaring variable filename and storing the 0th index of various_inputs array in it
 fh = open(filename, "r")
-colorLine = fh.readline() 
+#creating variable fh to open the filename file
+colorLine = fh.readline()
+#creating variable colorLine and storing the first line of the file in it 
 colorLine.strip()
+#getting rid of spaces in between the elements in colorLine
 col = colorLine.split()[0]
+#spliting colorLine and storing the 0th index of it in variable col  
 row = colorLine.split()[1]
+#spliting colorLine and storing the 1st index of it in variable row 
 num = colorLine.split()[2]
+#spliting colorLine and storing the 2nd index of it in variable num 
 row=int(row)
+#turning row into an int
 col=int(col)
+#turning col into an int
 numColors=int(num)
+#turning num into an int and storing in variable numColors
 colorDefs = [[0]*2]*numColors
+#declaring colorDefs 2D array with numColors internal arrays with 2 elements per array 
 filtered_colorDefs=[[0]]*numColors
+#declaring filtered_colorDefs array with numColors elements 
 angle1=various_inputs[2]
+#storing the 2nd index of the various_inputs array in variable angle1
 thickness=various_inputs[1]
-turtle.screensize(400,400,"gray") 
+#storing the 1st index of the various_inputs array in variable thickness
+turtle.screensize(400,400,"white")
+#setting the turtle screen size to 400X400 with white as the background color 
 color_array(numColors,colorDefs,filtered_colorDefs)
+#calling the color_array function with parameters int numColors, 2D array colorDefs
+#and filtered_colorDefs array
 loops(row,col,thickness,angle1,filtered_colorDefs)
+#calling the loops function with parameters ints row and col, int thickness, int angle1
+#which is the angle of rotation and the filtered_colorDefs array
 fh.close()
+#closing the file to prevent it from getting corrupted
 turtle.mainloop()
+#making the turtle window stay open
