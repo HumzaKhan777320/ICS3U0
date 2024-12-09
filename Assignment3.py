@@ -11,7 +11,8 @@ Variable Dictionary:
 inputs - Function to get user inputs and append to various_inputs array
 prmpt - First part of user prompt
 prmpt_continued - Second part of user prompt
-whole_prmpt - Combined string of prmpt and prmpt_continued for the file name input
+examples - Third part of user's prompt with assignment specific file names
+whole_prmpt - Combined string of prmpt, prmpt_continued and examples for the file name input
 usr_inpt - User input for the filename
 thickness - User input for the thickness/size of the image
 angle1 - User input for the angle rotation (0, 90, 180, 270)
@@ -47,8 +48,10 @@ def inputs(various_inputs):
     #first part of the user's prompt for file name
     prmpt_continued=" Remeber it has to be in the same directory: "
     #second part of the user's input for file name
-    whole_prmpt=prmpt+prmpt_continued
-    # compining the 2 parts into one prompt
+    examples="Some examples include: rocky_bullwinkle_mod.xpm and smiley_emoji_mod.xpm: "
+    #some examples of file names
+    whole_prmpt=prmpt+prmpt_continued+examples
+    # compining the 3 parts into one prompt
     usr_inpt=input(whole_prmpt)
     #displaying prompt to user
     #taking the file name as input from the user and storing in usr_inpt
@@ -243,4 +246,3 @@ while(run_code==True):
         #printing a message to the user that there file name is wrong
         print(" and try again")
         #telling the user to try again after checking the file name and location
-        
