@@ -16,7 +16,7 @@ def whole(n):
             for i in range(1,n+1):
                 print(fib(i),end=" ")
     except:
-        print("Soory you did not input a whole nuber plese try again")
+        print("Sorry you did not input a whole nuber plese try again")
 
 print("Program for printing the Fibonacci sequence!")
 x=input("Please input a whole number: ")
