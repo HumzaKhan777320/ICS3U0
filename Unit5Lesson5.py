@@ -1,14 +1,26 @@
-def f(n):
+def fib(n):
     if(n==0):
         return(0)
     if(n==1):
         return(1)
     else:
-        a=f(n-1)+f(n-2)
+        a=fib(n-1)+fib(n-2)
         return a
+    
 def whole(n):
-    for i in range(n+1):
-        print(f(i),end=" ")
-    return ""
-x=int(input("Enter an integer to get the numbers in the Fibonacci up to your input: "))
-print(whole(x))
+    try:
+        n=int(n)
+        if(n==0):
+            print(fib(0))
+        else:
+            for i in range(1,n+1):
+                print(fib(i),end=" ")
+    except:
+        print("Soory you did not input a whole nuber plese try again")
+
+print("Program for printing the Fibonacci sequence!")
+x=input("Please input a whole number: ")
+if int(x)<0:
+    print("Sorry no negative numbers try again")
+else:
+    whole(x)
