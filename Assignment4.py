@@ -6,8 +6,11 @@ def letters_to_num(month,day,year):
     for i in range(len(mnths)):
         if month==mnths[i]:
             month=str(i+1)
-    if int(month)<10:
-        month="0"+str(month)
+    try:
+        if int(month)<10:
+            month="0"+str(month)
+    except:
+        return 0
     return str(year+month+day)
 
 def mergeSort(arr1,arr2, l, r):
@@ -82,9 +85,11 @@ for i in range(1038):
 print("Welcome to the Wordle Database!")
 on = True
 while on:
+    
     exit=" or enter x to exit the program: "
     prompt="\nEnter w if you are looking for a word, or d for a word on a certain date"+exit
     x=input(prompt)
+    
     if(x.lower()=='w'):
         mergeSort(word_arr,int_arr,0,len(word_arr)-1)
         y=input("What word are you looking for? ")
@@ -94,24 +99,56 @@ while on:
           print(f"The word {y} was the solution to the puzzle on {date}")
         else:
           print(f"{y} was not found in the database.")
+          
     if(x.lower()=='d'):
+        
         mergeSort(int_arr,word_arr,0,len(int_arr)-1)
+        
         yr=(input("Enter the year: "))
+        
+        try:
+            int(yr)
+        except:
+            print("Sorry this is not a valid input for the year please try again")
+            continue
+        if(int(yr)<1):
+            print("Sorry this is not a valid input for the year please try again")
+            continue
+        
         janToDec=(input("Enter the month (3-letter abbreviation, as in 'Jan' for 'January'): "))
+        
         day_input=(input("Enter the day: "))
+        
+        try:
+            int(day_input)
+        except:
+            print("Sorry this is not a valid input for the day please try again")
+            continue
+        if(int(day_input)<1):
+            print("Sorry this is not a valid input for the day please try again")
+            continue
+        
         if int(day_input)<10:
           day_input="0"+day_input
+          
         int_date=letters_to_num(janToDec,day_input,yr)
+        if(int_date == 0):
+            print("Sorry you did not enter a valid month please try again")
+            continue
+        
         wrd=isMatch(int_date,int_arr,word_arr,0,len(int_arr)-1)
+        
         if wrd != 0:
           print(f"The word entered on {int_date} was {wrd}")
         else:
           if(int(int_date)<20210619):
             print(f"{int_date} is too early. No wordles occurred before 20210619. Enter a later date.")
-          if(int(int_date>20240421)):
+          if(int(int_date)>20240421):
             late_prmpt="Our records only go as late as 20240421. Please enter an earlier date."
             first=f"{int_date} is too recent. "+late_prmpt
             print(first)
+            
     if(x.lower()=='x'):
       print("Thank you for using the Wordle Database good luck on future wordles!")
       on=False
+fh.close()
