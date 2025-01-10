@@ -1,8 +1,12 @@
-#not close to being done
 def date(month,year):
-    if int(month)<10:
+    month=int(month)
+    year=int(year)
+    if month<10:
         month="0"+str(month)
-    return str(year+month)
+    year=str(year)
+    month=str(month)
+    temp=str(year+month)
+    return(int(temp))
 
 
 def mergeSort(arr1,arr2,arr3,arr4,arr5, low, high):
@@ -19,7 +23,7 @@ def mergeSort(arr1,arr2,arr3,arr4,arr5, low, high):
         merge(arr1,arr2,arr3,arr4,arr5, low, mid, high)
         #merging the split arrays together by calling merge function
         
-def merge(arr1,arr2,arr3,arr4,arr5 low, mid, high):
+def merge(arr1,arr2,arr3,arr4,arr5, low, mid, high):
 #declaring merge function that merges two sorted sub-arrays
 #takes arr1 and arr2 along with the lower and upper bounds of the array and the middle
 #index as parameters
@@ -147,27 +151,30 @@ def merge(arr1,arr2,arr3,arr4,arr5 low, mid, high):
         k += 1
         #incrementing k since the jth index has now been copied to 
         # the kth index of the merged arrays 
-def isMatch(input,arr1,arr2,low,high):
-#function for checking if input occurs in arr 1 and
-#returns the corresponding value in arr2
-  if low>high:
+def isMatch(input,arr1,arr2,arr3,arr4,arr5,low,high):
+    return_arr=[]
+    if low>high:
   #checks if lower bound of arr1 is higher then the upper bound
-    return 0  
+        return 0  
     #returns 0 as an indicator that input is not located in arr1
-  mid = low + (high - low) // 2
+    mid = low + (high - low) // 2
   #calculating the middle index for spliting the array when searching 
   #through recursion
-  if arr1[mid] == input:
+    if arr1[mid] == input:
   #checks if the mid index of arr1 equals input
-    return arr2[mid]
+      return_arr.append(arr2[mid])
+      return_arr.append(arr3[mid])
+      return_arr.append(arr4[mid])
+      return_arr.append(arr5[mid])
+      return return_arr
     #returns the corresponding value of arr2
-  elif arr1[mid] < input:
+    elif arr1[mid] < input:
   #checks if mid is to low index
-    return isMatch(input,arr1,arr2,mid+1,high)
+        return isMatch(input,arr1,arr2,arr3,arr4,arr5,mid+1,high)
     #calls isMatch again with a higher low parameter
-  else:
+    else:
   #declaring else statment
-    return isMatch(input,arr1,arr2,low,mid-1) 
+        return isMatch(input,arr1,arr2,arr3,arr4,arr5,low,mid-1) 
     #calls isMatch again with a lower high parameter
        
 
@@ -177,45 +184,41 @@ try:
 except:
   file=False
 if file==True:
-  first_name=[] 
-  last_name=[]
-  cctype=[]
-  ccNumber=[]
-  wholeExp=[]
-temp_line=fh.readline()
+    first_name=[] 
+    last_name=[]
+    cctype=[]
+    ccNumber=[]
+    wholeExp=[]
+    temp_line=fh.readline()
 
-for i in range(200):
-    read=fh.readline()
-    name,lastname,type,number,month,year = read.split(',')
-    wholeExp.append(date(month,year))
-    first_name.append(name)
-    last_name.append(lastname)
-    cctype.append(type)
-    ccNumber.append(number)
-      
+    for i in range(200):
+        read=fh.readline()
+        read.strip()
+        name,lastname,type,number,month,year = read.split(',')
+        wholeExp.append(date(month,year))
+        first_name.append(name)
+        last_name.append(lastname)
+        cctype.append(type)
+        ccNumber.append(number)
+          
 
-print("Welcome to the Credit Card Report")
-  #printing a message to the user welcoming them
-on = True
-  #declaring bool variable on and setting to true
-while on:
-    mergeSort(word_arr,int_arr,0,len(word_arr)-1)
-    #calling mergeSort function to sort the word_arr
-          date=isMatch(input_word,word_arr,int_arr,0,len(word_arr)-1)
+    print("Welcome to the Credit Card Report")
+      #printing a message to the user welcoming them
 
-          if date != 0:
-          #checks if the return is not 0
-            print(f"The word {input_word} was the solution to the puzzle on {date}")
-            #tells the user what date the entered word was for
-          else:
-            print(f"{input_word} was not found in the database.")
-            #tells the user that there inputted word was not found
- 
-          mergeSort(int_arr,word_arr,0,len(int_arr)-1)
-         
-  fh.close()
-  #closing the file to prevent corruption
+    mergeSort(wholeExp,ccNumber,cctype,last_name,first_name,0,len(wholeExp)-1)
+    print(wholeExp)
+    print(first_name) 
+    print(last_name)
+    print(cctype)
+    print(ccNumber)
+    #corresponding=isMatch(input_word,word_arr,int_arr,0,len(word_arr)-1)
+
+     
+
+             
+    fh.close()
+      #closing the file to prevent corruption
 else:
 #declaring else statement 
-  print("Sorry the data file wordle.dat was not found in the right directory check the file and try again")
+  print("Sorry the data file data.dat was not found in the right directory check the file and try again")
   #telling the user the "wordle.dat" file was not found and to try the code again after checking file
