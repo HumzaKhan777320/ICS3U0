@@ -151,32 +151,8 @@ def merge(arr1,arr2,arr3,arr4,arr5, low, mid, high):
         k += 1
         #incrementing k since the jth index has now been copied to 
         # the kth index of the merged arrays 
-def isMatch(input,arr1,arr2,arr3,arr4,arr5,low,high):
-    return_arr=[]
-    if low>high:
-  #checks if lower bound of arr1 is higher then the upper bound
-        return 0  
-    #returns 0 as an indicator that input is not located in arr1
-    mid = low + (high - low) // 2
-  #calculating the middle index for spliting the array when searching 
-  #through recursion
-    if arr1[mid] == input:
-  #checks if the mid index of arr1 equals input
-      return_arr.append(arr2[mid])
-      return_arr.append(arr3[mid])
-      return_arr.append(arr4[mid])
-      return_arr.append(arr5[mid])
-      return return_arr
-    #returns the corresponding value of arr2
-    elif arr1[mid] < input:
-  #checks if mid is to low index
-        return isMatch(input,arr1,arr2,arr3,arr4,arr5,mid+1,high)
-    #calls isMatch again with a higher low parameter
-    else:
-  #declaring else statment
-        return isMatch(input,arr1,arr2,arr3,arr4,arr5,low,mid-1) 
-    #calls isMatch again with a lower high parameter
-       
+
+
 
 file=True
 try:     
@@ -200,25 +176,26 @@ if file==True:
         last_name.append(lastname)
         cctype.append(type)
         ccNumber.append(number)
-          
+    fh.close()
+    #closing the file to prevent corruption          
 
-    print("Welcome to the Credit Card Report")
-      #printing a message to the user welcoming them
 
     mergeSort(wholeExp,ccNumber,cctype,last_name,first_name,0,len(wholeExp)-1)
-    print(wholeExp)
-    print(first_name) 
-    print(last_name)
-    print(cctype)
-    print(ccNumber)
-    #corresponding=isMatch(input_word,word_arr,int_arr,0,len(word_arr)-1)
+    Write=open("credit_card-report.txt","w")
+    for i in range(len(wholeExp)):
+        if wholeExp[i]<202501:
+            Write.write("%-38s %-13s %s %d EPIRED \n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
+        elif wholeExp[i]==202501:
+            Write.write("%-38s %-13s %s %d RENEW IMMEDIATELY\n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
+        else:
+            Write.write("%-38s %-13s %s %d Not EXPIRED\n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
 
-     
+    Write.close()
+    print("Thank you for using the Credit Card Report Program your report is located in the file credit_card-report.txt on your computer.")
 
              
-    fh.close()
-      #closing the file to prevent corruption
+
 else:
 #declaring else statement 
   print("Sorry the data file data.dat was not found in the right directory check the file and try again")
-  #telling the user the "wordle.dat" file was not found and to try the code again after checking file
+  #telling the user the "data.dat" file was not found and to try the code again after checking file
