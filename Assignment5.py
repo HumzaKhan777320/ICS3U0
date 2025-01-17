@@ -1,3 +1,17 @@
+#Not done yet
+"""
+Name: Humza Saleem Khan 
+Student Number: 777320@pdsb.net
+Course Code: ICS3U0
+Assignment: FINAL PROJECT - Credit Card Report
+01/15/2025
+
+
+Variable Dictionary:
+
+"""
+
+#functions
 def date(month,year):
     month=int(month)
     year=int(year)
@@ -7,11 +21,10 @@ def date(month,year):
     month=str(month)
     temp=str(year+month)
     return(int(temp))
-
-
+#----------------------------------------------------------------------------------------------------------------
 def mergeSort(arr1,arr2,arr3,arr4,arr5, low, high):
-#declaring function mergeSort that sorts 2 arrays together using merge sort
-#takes 2 arrays and the upper and lower bounds of the processed array as parameters
+#declaring function mergeSort that sorts arr1 and changes arr2-5 accordingly using merge sort
+#takes 5 arrays and the upper and lower bounds of the processed array as parameters
     if low < high:
     #compares low and high to create an exit condition for the recursion
         mid = low + (high - low) // 2
@@ -25,7 +38,7 @@ def mergeSort(arr1,arr2,arr3,arr4,arr5, low, high):
         
 def merge(arr1,arr2,arr3,arr4,arr5, low, mid, high):
 #declaring merge function that merges two sorted sub-arrays
-#takes arr1 and arr2 along with the lower and upper bounds of the array and the middle
+#takes arr1-5 along with the lower and upper bounds of the array and the middle
 #index as parameters
     n1 = mid - low + 1
     #calculate the number of elements in the left sub-array and store in n1
@@ -90,20 +103,20 @@ def merge(arr1,arr2,arr3,arr4,arr5, low, mid, high):
         if L[i] <= R[j]:
         #comparingeach sub-arrays corresponding elements
             arr1[k] = L[i]
-            #copying the data from left sub-array back to the main array
+            #copying the data from left sub-array back to it's main array
             arr2[k]=L2[i]
-            #copying the data from left sub-array back to the main array
+            #copying the data from left sub-array back to it's main array
             arr3[k]=L3[i]
-            #copying the data from left sub-array back to the main array
+            #copying the data from left sub-array back to it's main array
             arr4[k]=L4[i]
-            #copying the data from left sub-array back to the main array
+            #copying the data from left sub-array back to it's main array
             arr5[k]=L5[i]
-            #copying the data from left sub-array back to the main array
+            #copying the data from left sub-array back to it's main array
             i += 1
-            #incrementing i and not j since the jth index of R/R2 wasnt copyed yet
+            #incrementing i and not j since the jth index of R-R5 wasnt copyed yet
         else:
         #declaring else statment
-            arr1[k] = R[j]
+            arr1[k] = R[j]#--------------------------------------------------------------------------------------
             #copying the data from right sub-array back to the main array
             arr2[k] = R2[j]
             #copying the data from right sub-array back to the main array
