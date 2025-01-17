@@ -20,7 +20,8 @@ def date(month,year):
     year=str(year)
     month=str(month)
     temp=str(year+month)
-    return(int(temp))
+    temp=int(temp)
+    return(temp)
 #----------------------------------------------------------------------------------------------------------------
 def mergeSort(arr1,arr2,arr3,arr4,arr5, low, high):
 #declaring function mergeSort that sorts arr1 and changes arr2-5 accordingly using merge sort
@@ -116,49 +117,49 @@ def merge(arr1,arr2,arr3,arr4,arr5, low, mid, high):
             #incrementing i and not j since the jth index of R-R5 wasnt copyed yet
         else:
         #declaring else statment
-            arr1[k] = R[j]#--------------------------------------------------------------------------------------
-            #copying the data from right sub-array back to the main array
+            arr1[k] = R[j]
+            #copying the data from right sub-array back to it's main array
             arr2[k] = R2[j]
-            #copying the data from right sub-array back to the main array
+            #copying the data from right sub-array back to it's main array
             arr3[k] = R3[j]
-            #copying the data from right sub-array back to the main array
+            #copying the data from right sub-array back to it's main array
             arr4[k] = R4[j]
-            #copying the data from right sub-array back to the main array
+            #copying the data from right sub-array back to it's main array
             arr5[k] = R5[j]
-            #copying the data from right sub-array back to the main array
+            #copying the data from right sub-array back to it's main array
             j += 1
-            #incrementing j and not i since the ith index of L/L2 wasnt copyed yet
+            #incrementing j and not i since the ith index of L-L5 wasnt copyed yet
         k += 1
         #adding to k so we don't change the same index of the merged array twice
     while i < n1:
-    #checking if there's anything left in L/L2 that wasn't copied
+    #checking if there's anything left in L-L5 that wasn't copied
         arr1[k] = L[i]
-        #adding anything left in L to the main array
+        #adding anything left in L to it's main array
         arr2[k] = L2[i]
-        #adding anything left in L2 to the secondary array
+        #adding anything left in L2 to it's main array
         arr3[k] = L3[i]
-        #adding anything left in L2 to the secondary array
+        #adding anything left in L3 to it's main array
         arr4[k] = L4[i]
-        #adding anything left in L2 to the secondary array
+        #adding anything left in L4 to it's main array
         arr5[k] = L5[i]
-        #adding anything left in L2 to the secondary array
+        #adding anything left in L5 to it's main array
         i += 1
         #incrementing i since the ith index has now been copied 
         k += 1
         #incrementing k since the ith index has now been copied to
         # the kth index of the merged arrays 
     while j < n2:
-    #checking if there's anything left in R/R2 that wasn't copied
+    #checking if there's anything left in R-R5 that wasn't copied
         arr1[k] = R[j]
-        #adding anything left in R to the main array
+        #adding anything left in R to it's main array
         arr2[k] = R2[j]
-        #adding anything left in R2 to the secondary array
+        #adding anything left in R2 to it's main array
         arr3[k] = R3[j]
-        #adding anything left in R2 to the secondary array
+        #adding anything left in R3 to it's main array
         arr4[k] = R4[j]
-        #adding anything left in R2 to the secondary array
+        #adding anything left in R4 to it's main array
         arr5[k] = R5[j]
-        #adding anything left in R2 to the secondary array
+        #adding anything left in R5 to it's main array
         j += 1
         #incrementing j since the jth index has now been copied 
         k += 1
@@ -168,11 +169,16 @@ def merge(arr1,arr2,arr3,arr4,arr5, low, mid, high):
 
 
 file=True
-try:     
+#creating bool variable file and setting to true to check if "data.dat" is on the user's computer
+try:
+#declaring try function
   fh=open("data.dat","r")
+  #opening the "data.dat" file for reading
 except:
+#declaring except function
   file=False
-if file==True:
+  #setting file to False to stop further code
+if file==True:#--------------------------------------------------------------------------------------
     first_name=[] 
     last_name=[]
     cctype=[]
