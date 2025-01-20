@@ -178,36 +178,52 @@ except:
 #declaring except function
   file=False
   #setting file to False to stop further code
-if file==True:#--------------------------------------------------------------------------------------
-    first_name=[] 
+if file==True:
+#checks if file is true
+    first_name=[]
+    #declaring array to store each first name
     last_name=[]
+    #declaring array to store each last name
     cctype=[]
+    #declaring array to store each type of card
     ccNumber=[]
+    #declaring array to store each credit card number
     wholeExp=[]
+    #declaring array to store each full expiary number
     temp_line=fh.readline()
-
+    #reading the first line of the file outside of loop because it dose not have valid information
     for i in range(200):
+    #creating a for loop to go through each line of the file
         read=fh.readline()
+        #reading the ith line of the file and storing in read
         read.strip()
+        #removing whitespace in between characters
         name,lastname,type,number,month,year = read.split(',')
+        #spliting the line of data into each piece of data
         wholeExp.append(date(month,year))
+        #calling the date function with the month and year of expiary and storing to wholeExp 
         first_name.append(name)
+        #appending the first name in the current line of data to first_name array
         last_name.append(lastname)
+        #appending the last name in the current line of data to last_name array
         cctype.append(type)
+        #appending the credit card type in the current line of data to cctype array
         ccNumber.append(number)
+        #appending the credit card number in the current line of data to ccNumber array
     fh.close()
     #closing the file to prevent corruption          
 
 
     mergeSort(wholeExp,ccNumber,cctype,last_name,first_name,0,len(wholeExp)-1)
+    #calling mergeSort function which sorts based on the expiary date
     Write=open("credit_card-report.txt","w")
-    for i in range(len(wholeExp)):
+    #opening/creating the credit_card-report function for writing and storing in access variable Write
+    for i in range(len(wholeExp)):#----------------------------------------------------------------------------------------------------------------
         if wholeExp[i]<202501:
-            Write.write("%-38s %-13s %s %d EPIRED \n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
+            Write.write("%-38s %-13s #%s %d EPIRED \n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
         elif wholeExp[i]==202501:
-            Write.write("%-38s %-13s %s %d RENEW IMMEDIATELY\n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
-        else:
-            Write.write("%-38s %-13s %s %d Not EXPIRED\n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
+            Write.write("%-38s %-13s #%s %d RENEW IMMEDIATELY\n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
+
 
     Write.close()
     print("Thank you for using the Credit Card Report Program your report is located in the file credit_card-report.txt on your computer.")
