@@ -4,7 +4,7 @@ Name: Humza Saleem Khan
 Student Number: 777320@pdsb.net
 Course Code: ICS3U0
 Assignment: FINAL PROJECT - Credit Card Report
-01/15/2025
+01/21/2025
 
 
 Variable Dictionary:
@@ -13,16 +13,27 @@ Variable Dictionary:
 
 #functions
 def date(month,year):
+#declaring date function that takes the expiary month and year as parameters and
+#outputs the expiary as a number
     month=int(month)
+    #converts the month to int 
     year=int(year)
+    #converts the year to int
     if month<10:
+    #checks if the month is less than 10 for a proper numerical form
         month="0"+str(month)
+        #adds a 0 to the month and converts it to string
     year=str(year)
+    #converts the year to string
     month=str(month)
+    #converts the month to string incase the month is more than or = to 10
     temp=str(year+month)
+    #puts the month and year together in a numerical string form and stores in temp
     temp=int(temp)
+    #converting temp to int
     return(temp)
-#----------------------------------------------------------------------------------------------------------------
+    #returning temp
+
 def mergeSort(arr1,arr2,arr3,arr4,arr5, low, high):
 #declaring function mergeSort that sorts arr1 and changes arr2-5 accordingly using merge sort
 #takes 5 arrays and the upper and lower bounds of the processed array as parameters
@@ -167,7 +178,8 @@ def merge(arr1,arr2,arr3,arr4,arr5, low, mid, high):
         # the kth index of the merged arrays 
 
 
-
+#driver/main code
+        
 file=True
 #creating bool variable file and setting to true to check if "data.dat" is on the user's computer
 try:
@@ -218,16 +230,31 @@ if file==True:
     #calling mergeSort function which sorts based on the expiary date
     Write=open("credit_card-report.txt","w")
     #opening/creating the credit_card-report function for writing and storing in access variable Write
-    for i in range(len(wholeExp)):#----------------------------------------------------------------------------------------------------------------
+    for i in range(len(wholeExp)):
+    #going through every expiary/line of data
+        whole_name = first_name[i]+" "+last_name[i]+":"
+        #storing the users whole name in whole_name for a simpler formated print
         if wholeExp[i]<202501:
-            Write.write("%-38s %-13s #%s %d EPIRED \n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
+        #checking if the expiary date has passed
+            end="EXPIRED"
+            #setting the end prompt to expired
         elif wholeExp[i]==202501:
-            Write.write("%-38s %-13s #%s %d RENEW IMMEDIATELY\n" %((first_name[i]+" "+last_name[i]+":"), cctype[i], ccNumber[i], wholeExp[i]))
-
+        #checking if the expiary date is now
+            end="RENEW IMMEDIATELY"
+            #setting the end prompt to renew imediately
+        else:
+        #declaring else statment
+            break
+            #ending the loop since the rest of the credit cards have time before expiary
+        Write.write("%-38s %-13s #%s %d %s\n" %(whole_name, cctype[i], ccNumber[i], wholeExp[i],end))
+        #writing the reprt to the credit_card-report.txt file
 
     Write.close()
-    print("Thank you for using the Credit Card Report Program your report is located in the file credit_card-report.txt on your computer.")
-
+    #closing the file after writing
+    print("Thank you for using the Credit Card Report Program your report is located",end="")
+    #printing a message for the user
+    print(" in the file credit_card-report.txt on your computer.")
+    #printing a message for the user
              
 
 else:
