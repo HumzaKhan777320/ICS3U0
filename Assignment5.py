@@ -1,14 +1,48 @@
-#Not done yet
 """
 Name: Humza Saleem Khan 
 Student Number: 777320@pdsb.net
 Course Code: ICS3U0
 Assignment: FINAL PROJECT - Credit Card Report
-01/21/2025
+01/22/2025
 
 
 Variable Dictionary:
-
+date - Function that takes the expiration month and year as parameters and 
+    returns the expiration date as a numerical value
+month - Month of the credit card expiration date
+year - Year of the credit card expiration date
+temp - Combined year and month in numerical string form
+mergeSort - Function that sorts the  arr1 array and adjusts arr2-5 accordingly using 
+    merge sort, takes five arrays and the upper and lower bounds of the array
+    as parameters and calls the merge function
+arr1-5 - Arrays used in the merge sort and merge functions for sorting
+    and adjusting credit card data accordingly
+low - Starting index of the array segment to be sorted
+high - Ending index of the array segment to be sorted
+mid - Middle index which is used to divide arrays into sub-arrays for sorting
+merge - Function that merges two sorted sub-arrays that takes arr1-5 along with 
+    the lower and upper bounds of the array and the middle index as parameters
+n1 - Number of elements in the left sub-array
+n2 - Number of elements in the right sub-array
+L-L5, R-R5 - Temporary arrays for holding data during the merge process
+i - Index for iterating through the left sub-array and for going through the
+    wholeExp array
+j - Index for iterating through the right sub-array
+k - Index for iterating through the main array during merging
+file - Bool variable to check if the "data.dat" file is on the user's computer
+fh - Variable for opening the "data.dat" file for reading
+first_name - Array to store each first name from "data.dat"
+last_name - Array to store each last name from "data.dat"
+cctype - Array to store each type of credit card from "data.dat"
+ccNumber - Array to store each credit card number from "data.dat"
+wholeExp - Array to store each full expiration date as a numerical value
+temp_line - Temporary variable to read the first line of "data.dat"
+read - Temporary variable to read each line of the file
+name, lastname, type, number, month, year - Variables to hold split data 
+    from each line of "data.dat"
+Write - Variable for writing the credit card report to "credit_card-report.txt"
+whole_name - Variable to store the user's full name for formatted printing
+end - Variable to store the status of the credit card(EXPIRED, RENEW IMMEDIATELY)
 """
 
 #functions
@@ -229,7 +263,8 @@ if file==True:
     mergeSort(wholeExp,ccNumber,cctype,last_name,first_name,0,len(wholeExp)-1)
     #calling mergeSort function which sorts based on the expiary date
     Write=open("credit_card-report.txt","w")
-    #opening/creating the credit_card-report function for writing and storing in access variable Write
+    #opening/creating the credit_card-report function for
+    #writing and storing in access variable Write
     for i in range(len(wholeExp)):
     #going through every expiary/line of data
         whole_name = first_name[i]+" "+last_name[i]+":"
@@ -258,6 +293,6 @@ if file==True:
              
 
 else:
-#declaring else statement 
+#declaring else statement if the data.dat file was not found
   print("Sorry the data file data.dat was not found in the right directory check the file and try again")
   #telling the user the "data.dat" file was not found and to try the code again after checking file
